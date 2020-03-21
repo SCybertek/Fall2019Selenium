@@ -47,17 +47,42 @@ public class FIndElementsTest {
             driver.navigate().back();
             Thread.sleep(2000);
             //refresh list
-            driver.findElements(By.tagName("a"));
-            //once you leave the page the element gets lost
+            links = driver.findElements(By.tagName("a")); //we refresh and assign each link to links in List (?)
+            //once you leave the page the element connection was lost
+            //we need to find it again
+            // (some number is changing ..since it changes the element is lost if we DO NOT refresh
             //we need to refresh to find elements again and again
+
+            //the index does not change since we did not touch the index
         }
         driver.quit();
 
     }
 
     //StaleElementReferenceException :
+
     //means that Selenium cannot find previously located element
     //it happens when you are trying to interact with element after page refresh or navigation
 
-    //to fix we nee dto refresh our collection!
+    //to fix we nee dto refresh our collection! in here
+    //interview question : if that occurs you nee dto find element again
+    //so you basically re-assigning ( reconnecting with element again)
+    //for this we can use TRY and CATCH block .. if it generated exception : TRY generate element again
+    // try {
+    // driver.findElement(By.id("name")).click();
+    //} catch (StaleElementREferenceException e) {
+    // driver.findLement(By.id("name")).click()
+
+    //what happens if elemenet was not found ? findElement?
+    //NoSuchElementException
+    //what happend if elements were not found , in case of findElements?
+    //nothing, you will get empty list
+
+    //Interview : how to check if element does not exist any more ?
+    //check if collection is empty :
+    //if (driver.findElements(By.id("name").size() == 0 )) {
+    //element doed not exist ..
+
+    //YOu can use findElements method to find 0+ elements
+    //In case of find element - 1 only element. if there is no element by given locator - NOSuchElementExeption
 }
