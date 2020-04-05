@@ -1,7 +1,7 @@
 package com.automation.tests.day9;
 
-import com.automation.tests.utilities.BrowserUtils;
-import com.automation.tests.utilities.DriverFactory;
+import com.automation.utilities.BrowserUtils;
+import com.automation.utilities.DriverFactory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -61,6 +61,9 @@ public class ActionsTests {
         WebElement imgText2 = driver.findElement(By.xpath("//h5[text()='name: user2']"));
         Assert.assertTrue(imgText2.isDisplayed());
 
+        actions.contextClick(); // This is RIGHT CLICK
+        //keyDown() ==> key press
+        //keyUp()==> key release
 
         //we can do it separately
 
@@ -154,9 +157,9 @@ public class ActionsTests {
         driver.quit();
     }
 }
-//Selenium can sometimes execute JavaScript
-//every single website support java script!
-//in selenium webdriver there is JavaScriptExecutor interface
+//Selenium can sometimes execute JavaScript code
+//every single website support java script! (HTML/CSS and JS)
+//in selenium web  driver there is JavaScriptExecutor interface
 //we can click on elements/ we can write functions(methods) very useful javascript will be scrolling
 //only 1 line of code , because JS is UI developer and it has everything
 //you can work around with Java as well = for alternative solution

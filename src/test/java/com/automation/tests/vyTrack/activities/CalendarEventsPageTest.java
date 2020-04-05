@@ -1,7 +1,7 @@
 package com.automation.tests.vyTrack.activities;
 
-import com.automation.tests.utilities.BrowserUtils;
-import com.automation.tests.utilities.DriverFactory;
+import com.automation.utilities.BrowserUtils;
+import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.Keys;
@@ -27,7 +27,7 @@ import java.time.format.DateTimeFormatter;
  * Verify that Create Calendar Event button is displayed
  */
 
-public class CalendarEventPageTest {
+public class CalendarEventsPageTest {
 
     private By usernameBy = By.id("prependedInput");
     private By passwordBy = By.id("prependedInput2");

@@ -1,7 +1,7 @@
 package com.automation.tests.vyTrack.activities;
 
-import com.automation.tests.utilities.BrowserUtils;
-import com.automation.tests.utilities.DriverFactory;
+import com.automation.utilities.BrowserUtils;
+import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

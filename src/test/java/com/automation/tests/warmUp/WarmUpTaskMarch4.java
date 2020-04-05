@@ -1,6 +1,6 @@
 package com.automation.tests.warmUp;
 
-import com.automation.tests.utilities.DriverFactory;
+import com.automation.utilities.DriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,8 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
 
 public class WarmUpTaskMarch4 {
 

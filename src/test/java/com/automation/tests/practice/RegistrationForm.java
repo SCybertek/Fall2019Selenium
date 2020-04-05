@@ -1,7 +1,7 @@
 package com.automation.tests.practice;
 
 
-import com.automation.tests.utilities.BrowserUtils;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,8 +12,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import javax.print.DocFlavor;
 
 public class RegistrationForm {
 //# --> refers to ID

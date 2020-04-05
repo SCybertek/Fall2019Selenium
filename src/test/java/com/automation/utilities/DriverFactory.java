@@ -1,4 +1,4 @@
-package com.automation.tests.utilities;
+package com.automation.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -30,4 +30,6 @@ public class DriverFactory {
             return new InternetExplorerDriver();
         }
     }
+    //it was like an oven to get a new driver object
+    //in our new Driver class will make sure it will provide the same driver object
 }

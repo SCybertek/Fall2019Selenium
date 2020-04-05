@@ -1,7 +1,6 @@
 package com.automation.tests.day5;
 
-import com.automation.tests.utilities.BrowserUtils;
-import com.google.gson.internal.$Gson$Preconditions;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

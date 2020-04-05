@@ -1,10 +1,9 @@
 package com.automation.tests.day7;
 
-import com.automation.tests.utilities.BrowserUtils;
-import com.automation.tests.utilities.DriverFactory;
+import com.automation.utilities.BrowserUtils;
+import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class XPath {
 // make this locator Public and use it in ALL classes        text()='Username' and text()='Password'

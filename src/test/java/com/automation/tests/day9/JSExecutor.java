@@ -1,11 +1,8 @@
 package com.automation.tests.day9;
 
-import com.automation.tests.utilities.BrowserUtils;
-import com.automation.tests.utilities.DriverFactory;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,7 +12,8 @@ import org.testng.annotations.Test;
 
 public class JSExecutor {
 
-    private RemoteWebDriver driver;
+    private RemoteWebDriver driver; //this is a class
+    //WebDriver is interface
 
     //Why do we need JavaScriptExecutor?
     //In Selenium Webdriver, locators like XPath, CSS, etc.
@@ -58,31 +56,45 @@ public class JSExecutor {
     @Test
     public void scrollTest(){
         driver.get("http://practice.cybertekschool.com/infinite_scroll");
-        //JavaScriptExecutor is an Interface !! No object can be created
-        //But WeBDriver and JSExectutor like sibling, pretty much and we can cast
-        //JavascriptException js = (JavascriptException) driver;
-        //it is an interface (no object can be created)
-        // we are using Polymorphism and referring the driver object by its Super and
-        //
-        //RemoteWebdriver has ?? no casting needed any more
+        driver.manage().window().maximize();
 
-        //scroll down 250 pixel
-        //x, y
-        //for (int x = 0 ; x <10) !1 WE USED LOOP BUUT WHYY?? listen to the class again!! especially last 30 min!
+       // driver.executeScript("window.scrollBy(0, 250)");
+        // .executeScript(): method that takes JavaScript code to execute
+        //scrollBy(0 ==> left or right : 250 ==> for scrolling down )
+        //x, y coordinates
 
-        driver.executeScript("window.scrollBy(0, 250)");
 
-        BrowserUtils.wait(3);
+        BrowserUtils.wait(2);
 
+        //we can loop it to make it more visible
+
+        for ( int i = 0; i < 10 ; i++) {
+            driver.executeScript("window.scrollBy(0, 250)");
+            BrowserUtils.wait(3);
+            //the purpose of scrolling down => is to make the web element intractable/make it visible
+        }
+
+
+        // we use WebDriver as reference type usually because
+        // JS has lots of methods that we don't need
 
 
     }
 
     @Test
     public void scrollToElementTest(){
+        //scrolling down until element is visible !! to certain element :
         driver.get("http://practice.cybertekschool.com/");
         driver.manage().window().maximize();
         WebElement link = driver.findElement(By.linkText("Cybertek School"));
+        //argument[0] ==> means the elemnet : link
+        //if we are to have more than one element then it will go like argument[1] etc.
+        // scrollIntoView = > javascript method
+        // .scrollIntoView(true) => scroll down until the element is in the VIEW! (visible and interactable)
         driver.executeScript("arguments[0].scrollIntoView(true)", link);
+        //here passing script as a String to execute it
+
+
+
     }
 }

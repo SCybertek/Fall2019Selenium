@@ -1,6 +1,6 @@
 package com.automation.tests.day8;
 
-import com.automation.tests.utilities.BrowserUtils;
+import com.automation.utilities.BrowserUtils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -13,7 +13,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.security.Key;
 import java.util.List;
 
 
