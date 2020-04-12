@@ -25,7 +25,7 @@ public class Driver {
             String browser = ConfigurationReader.getProperty("browser").toLowerCase();
             switch (browser){
                 case "chrome":
-                    WebDriverManager.chromedriver().version("79").setup();
+                    WebDriverManager.chromedriver().version("81").setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
                     //customize browser => incognito window / headless mode/ maximize window/ disable features of the browser/ solve SSL issues
                     chromeOptions.addArguments("--start-maximized"); //alternative approach to maximize window ( when maximize method from selenium does not work)

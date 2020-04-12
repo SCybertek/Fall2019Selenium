@@ -35,8 +35,8 @@ public abstract class AbstractPageBase {
 //passing Webdriver object inside the POM constructor
     //it is VERY important ! it serves to initialize the object and it finds the Elements!!
     //without it NO PAGE Object Model class will work !!!
-//finding web elements in POM : selenium has sth to improve this process : Page Factory
-//  helps to find element easier, syntax is shorter, more organized
+    //finding web elements in POM : selenium has sth to improve this process : Page Factory
+    //  helps to find element easier, syntax is shorter, more organized
     public AbstractPageBase(){
         PageFactory.initElements(driver, this );
     }

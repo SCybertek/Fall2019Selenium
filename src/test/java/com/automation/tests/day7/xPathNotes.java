@@ -7,7 +7,7 @@ public class xPathNotes {
 //partial linkText = like contains
 
 //.XML document is not rendered people deal with it .. it is used by developers..
-// HTML - is a document and ..
+// HTML - is a document
 
 //xpass works everywhere .. pom file and html as well
 
@@ -22,7 +22,7 @@ public class xPathNotes {
 //ex: //tagName[contains(@attribute,'value')] --> case and space sensitive
 // single quotes mostly prefered
 
-//className doe snot allow spaces = we can use (.) instead of space (????
+//className does not allow spaces = we can use (.) instead of space (????
 //HOW TO find parent from child:
 // when you have child element BUT you need a parent == :
 // you can use xPass :::
@@ -32,7 +32,7 @@ public class xPathNotes {
 //Xpath - over  scc Selector : we can move forward and backwards
 //find element by text  ( it available only in xPath)
 
-
+        //!!!dynamic elements can be handles by finding static siblings
         //!!!!!!!finding sibling: (in general input and label goes hand in hand = you can create method to find label, and put that into xpath)
 //        <label for="username">Username</label>
 //        <input type="test" name="username">

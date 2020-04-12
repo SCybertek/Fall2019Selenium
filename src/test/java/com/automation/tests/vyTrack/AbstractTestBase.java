@@ -41,7 +41,7 @@ public abstract class AbstractTestBase {
     public void setUpTest(@Optional String reportName){ //here we are providing parameter for tests (?)
         //@Optional - to make parameter optional
         //if you do not specify it, testing will require to specify this parameter for every test, in XML runner
-        System.out.println("Report name :" +reportName);
+        System.out.println("Report name: " +reportName);
         reportName = reportName == null ? "report.html" : reportName + ".html"; //making our report dynamic
         report = new ExtentReports(); //one report for everyone
 
@@ -68,10 +68,10 @@ public abstract class AbstractTestBase {
 
     @BeforeMethod
     public void setup(){
-        String URL = ConfigurationReader.getProperty("qa1");
+        String URL = ConfigurationReader.getProperty("qa3");
         Driver.getDriver().get(URL);// open URL = q1 in the browser
-        //Driver.getDriver().manage().window().maximize();
-        wait = new WebDriverWait(Driver.getDriver(),15);
+        Driver.getDriver().manage().window().maximize();
+        wait = new WebDriverWait(Driver.getDriver(),25);
         actions = new Actions(Driver.getDriver());
     }
 

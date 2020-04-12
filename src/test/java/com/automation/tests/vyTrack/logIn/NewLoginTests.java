@@ -4,7 +4,9 @@ import com.automation.pages.LoginPage;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.Driver;
 import com.automation.tests.vyTrack.AbstractTestBase;
+import com.automation.utilities.ExcelUtil;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -15,7 +17,7 @@ public class NewLoginTests extends AbstractTestBase {
     /**
      * Login and verify that page title is a "Dashboard"
      */
-    @Test
+    @Test //(groups = "smoke")
     public void verifyPageTitle(){
         //test is coming from ExtendTest object
         //this line should be added to every test at the beginning
@@ -82,6 +84,35 @@ public class NewLoginTests extends AbstractTestBase {
                 //here we have 3 sets of data so test will run exactly 3 times
                 //if you have more input boxes you can add more info, more columns
         } ;
-//later we will use Excel file instead of having data in Java
+
+        //later we will use Excel file instead of having data in Java
+    }
+
+
+    @Test (dataProvider = "credentialsFromExcel")
+    public void loginTestWithExcel(String execute, String username, String password, String firstname, String lastname, String result) {
+       test = report.createTest("Login test for username : " + username); // for every username will be dif. report
+        if ( execute.equals("y")) {
+            LoginPage loginPage = new LoginPage();
+            loginPage.logIn(username,password);
+            test.info("Login as " + username);//log some steps
+            test.info(String.format("First name: %s, Last name: %s, Username: %s", firstname, lastname, username));
+            test.pass("Successfully logged in as " + username);
+        } else {
+            throw new SkipException("Test was skipped");
+            //this exception is coming from testNG
+        }
+    }
+    /**
+     * we have these columns :
+     *  //execute	username	password	firstname	lastname	result
+     */
+    @DataProvider
+    public Object[][] credentialsFromExcel(){
+        //we need username and password columns
+        String path = "VytrackTestUsers.xlsx";
+        String  spreadSheet = "QA3-short";
+        ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
+        return excelUtil.getDataArray();
     }
 }
