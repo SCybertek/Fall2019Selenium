@@ -23,10 +23,10 @@ public class ExcelUtil {
     public ExcelUtil(String path, String sheetName) {
         this.path = path;
         try {
-            // Open the Excel file
+            // Open the Excel file - Input stream used whe we have alien file
             FileInputStream ExcelFile = new FileInputStream(path);
             // Access the required test data sheet
-            workBook = WorkbookFactory.create(ExcelFile);
+            workBook = WorkbookFactory.create(ExcelFile); // workbook factory reads old and new version of Excel files
             workSheet = workBook.getSheet(sheetName);
             // check if sheet is null or not. null means  sheetname was wrong
             Assert.assertNotNull(workSheet, "Sheet: \"" + sheetName + "\" does not exist\n");
@@ -128,9 +128,11 @@ public class ExcelUtil {
                 cell.setCellValue(value);
             }
             FileOutputStream fileOut = new FileOutputStream(path);
+            //this is output stream because we enter our changes from java to Excel
             workBook.write(fileOut);
 
-            fileOut.close();
+            fileOut.close(); //IMPORTANT!! if you do not close it you can corrupt the file
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -148,4 +150,38 @@ public class ExcelUtil {
     public int rowCount() {
         return workSheet.getPhysicalNumberOfRows();
     }
+
+    //method from Andrea : it colors the cells that PASS in green and Skipped in red
+    public void setCellData(String value, String columnName, int row, boolean passOrNot){
+        Cell cell;
+
+        int column = getColumnsNames().indexOf(columnName);
+        setCellData(value, row, column);
+        CellStyle style = workBook.createCellStyle();
+        if(passOrNot) {
+            style.setFillBackgroundColor(IndexedColors.BRIGHT_GREEN.getIndex());
+            style.setFillPattern(FillPatternType.LEAST_DOTS);
+        }else{
+            style.setFillBackgroundColor(IndexedColors.RED1.getIndex());
+            style.setFillPattern(FillPatternType.LEAST_DOTS);
+        }
+        try {
+            cell = workSheet.getRow(row).getCell(column);
+            if (cell == null) {
+                cell = workSheet.getRow(row).createCell(column);
+                cell.setCellValue(value);
+                cell.setCellStyle(style);
+            } else {
+                cell.setCellValue(value);
+                cell.setCellStyle(style);
+            }
+            FileOutputStream fileOut = new FileOutputStream(path);
+            workBook.write(fileOut);
+            fileOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+}
+
 }

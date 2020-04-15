@@ -14,6 +14,8 @@ import static org.testng.Assert.assertEquals;
 
 public class NewLoginTests extends AbstractTestBase {
 
+
+
     /**
      * Login and verify that page title is a "Dashboard"
      */
@@ -103,16 +105,6 @@ public class NewLoginTests extends AbstractTestBase {
             //this exception is coming from testNG
         }
     }
-    /**
-     * we have these columns :
-     *  //execute	username	password	firstname	lastname	result
-     */
-    @DataProvider
-    public Object[][] credentialsFromExcel(){
-        //we need username and password columns
-        String path = "VytrackTestUsers.xlsx";
-        String  spreadSheet = "QA3-short";
-        ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
-        return excelUtil.getDataArray();
-    }
+
+
 }

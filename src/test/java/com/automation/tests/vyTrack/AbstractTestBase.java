@@ -3,6 +3,7 @@ package com.automation.tests.vyTrack;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
+import com.automation.utilities.ExcelUtil;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -16,7 +17,6 @@ import javax.imageio.IIOException;
 import java.io.IOException;
 
 public abstract class AbstractTestBase {
-
     //base class for other classes
     //it has to be extended
     //we cannot use it on its own/ by definition it is NOT concrete
@@ -36,12 +36,15 @@ public abstract class AbstractTestBase {
     protected ExtentHtmlReporter htmlReporter;
     protected ExtentTest test;
 
+    protected static int row = 1;
+    protected ExcelUtil excelUtil;
+
     @BeforeTest //used to create the report
     @Parameters("reportName") //parameters comes from .xml ..and we need to specify this in order to get different reports (not override the same one all the time
     public void setUpTest(@Optional String reportName){ //here we are providing parameter for tests (?)
         //@Optional - to make parameter optional
         //if you do not specify it, testing will require to specify this parameter for every test, in XML runner
-        System.out.println("Report name: " +reportName);
+
         reportName = reportName == null ? "report.html" : reportName + ".html"; //making our report dynamic
         report = new ExtentReports(); //one report for everyone
 
@@ -52,6 +55,9 @@ public abstract class AbstractTestBase {
         } else {
             reportPath = System.getProperty("user.dir") + "/test-output/" + reportName;
         }
+
+        System.out.println("Report name: " +reportName);
+
         //is a HTML report itself
         htmlReporter = new ExtentHtmlReporter(reportPath);
         //add it to the reporter
@@ -91,6 +97,13 @@ public abstract class AbstractTestBase {
            // BrowserUtils.wait(2);
             test.addScreenCaptureFromPath(screenshotPath, "Failed");//attach screenshot
             test.fail(iTestResult.getThrowable());//attach console output
+
+            //if excelUtil object was created
+            //set value of the test as failed
+
+            if (excelUtil != null) {
+                excelUtil.setCellData("FAILED", "result", row++);
+            }
 
         }
         //BrowserUtils.wait(1);

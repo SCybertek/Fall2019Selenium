@@ -19,13 +19,13 @@ public class Driver {
        //if webDriver object does not exist ==> create it
         //we need to instantiate the driver
 
-        //webdriver manager is not trusted everywhere ,
+        //WebDriver manager is not trusted everywhere ,
         // like government company
         if (driver== null){
             String browser = ConfigurationReader.getProperty("browser").toLowerCase();
             switch (browser){
                 case "chrome":
-                    WebDriverManager.chromedriver().version("81").setup();
+                    WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
                     //customize browser => incognito window / headless mode/ maximize window/ disable features of the browser/ solve SSL issues
                     chromeOptions.addArguments("--start-maximized"); //alternative approach to maximize window ( when maximize method from selenium does not work)
@@ -57,4 +57,11 @@ public class Driver {
             driver = null; //driver destroyed
         }
     }
+
+
+    //every task requires tool => if we use selenium we need it dependency
+    //every dependency has its role
+    //sometimes dependencies are taken from MIRROR = that is local rep. that is inside of secret network
+    //most companies do that .. and to access them we need VPN - to access to that network
+    //in Vasyl's project it was called Nexus repository
 }
