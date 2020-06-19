@@ -16,7 +16,7 @@ public class ImplicitWait {
      * driver.manage().timeouts().implicitlyWait(time, time units);
      * driver.manage().timeouts().implicitlyWait(20, seconds);
      *
-     * specified once in the setter and webdriver will be waiting for the element fro 20 seconds
+     * specified once in the setup and webdriver will be waiting for the element fro 20 seconds
      */
 
 

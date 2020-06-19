@@ -34,7 +34,7 @@ public abstract class AbstractTestBase {
 // * entire JVM.
     protected ExtentReports report;
     protected ExtentHtmlReporter htmlReporter;
-    protected ExtentTest test;
+    protected ExtentTest test; // this shoul dbe specified inside  the test
 
     protected static int row = 1;
     protected ExcelUtil excelUtil;

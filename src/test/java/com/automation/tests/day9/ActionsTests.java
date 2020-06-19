@@ -17,6 +17,7 @@ public class ActionsTests {
     private WebDriver driver;
     private Actions actions;
     // this is important !!
+    //contextClick for right .doubleClick for double click
 
     @BeforeMethod
     public void setUp(){

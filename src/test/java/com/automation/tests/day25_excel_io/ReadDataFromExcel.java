@@ -99,7 +99,7 @@ public class ReadDataFromExcel {
         }
     }
 
-    @Test
+    @Test //(groups = "smoke")
     public void getColumnNamesTest() {
         String path = "VytrackTestUsers.xlsx";
         String spreadSheet = "QA1-short";

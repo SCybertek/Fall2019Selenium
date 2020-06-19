@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class WriteIntoExcelFile {
-
+//we use getter and setter in Excel like reading from excel and writin on excel
     @Test
     public void writeIntoFileTest() throws IOException {
         FileInputStream inputStream = new FileInputStream("VytrackTestUsers.xlsx"); //path from Content Root
@@ -21,6 +21,7 @@ public class WriteIntoExcelFile {
         Sheet sheet = workbook.getSheet("QA3-short");
         Row row = sheet.getRow(1); //2nd row
         Cell cell = row.getCell(5); //last column
+
 
         System.out.println("Before : " + cell.getStringCellValue());
         //lets write in that cell
@@ -38,7 +39,7 @@ public class WriteIntoExcelFile {
         Cell newCell2 = secondRow.createCell(6); //create a cell !!!
         newCell2.setCellValue(LocalDateTime.now().toString()); //set current date and time info into new cell
         //output was : 43935.85652
-        //we need to save it as a String : java.lang.IllegalStateException: Cannot get a STRING value from a NUMERIC cell
+        //we need to save it as a String
 
         //I crete if I want to write something into the file
         //don't forget to close excel file if you opened it

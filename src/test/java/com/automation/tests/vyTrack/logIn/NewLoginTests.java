@@ -19,7 +19,8 @@ public class NewLoginTests extends AbstractTestBase {
     /**
      * Login and verify that page title is a "Dashboard"
      */
-    @Test //(groups = "smoke")
+    @Test (timeOut = 5000) //timeOut is for Stress test (performance test)
+    //(groups = "smoke")
     public void verifyPageTitle(){
         //test is coming from ExtendTest object
         //this line should be added to every test at the beginning
@@ -29,7 +30,7 @@ public class NewLoginTests extends AbstractTestBase {
         //we are not supposed to see any webElement in the test !
         //.info is just System.out but it also goes to report
         test.info("Login as store manager"); //log some steps
-        String expected = "Dashboard";
+        String expected = "Dashoard";
         String actual = Driver.getDriver().getTitle();
         assertEquals(expected,actual, "Title is different");
 
@@ -101,10 +102,26 @@ public class NewLoginTests extends AbstractTestBase {
             test.info(String.format("First name: %s, Last name: %s, Username: %s", firstname, lastname, username));
             test.pass("Successfully logged in as " + username);
         } else {
-            throw new SkipException("Test was skipped");
-            //this exception is coming from testNG
+            test.skip("Test was skipped for user: " + username);
+            excelUtil.setCellData("SKIPPED", "result", row++);
+            //to skip some test in testng
+            throw new SkipException("Test was skipped for user: " + username);
         }
     }
 
+    @DataProvider
+    public Object[][] credentialsFromExcel() {
+        String path = "VytrackTestUsers.xlsx";
+        String spreadSheet = "QA3-short";
+        ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
+        //execute	username	password	firstname	lastname	result
+        return excelUtil.getDataArray();
+    }
 
-}
+    //Object[][] or Object[] or Iterator<Object[]>
+    //Object[] - 1 column with a data
+    //Object[][] 2+
+    }
+
+
+

@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 //this is a blueprint to page object that will be created out of it
 public class LoginPage {
@@ -36,6 +37,13 @@ public class LoginPage {
 
     @FindBy(css = "[class='alert alert-error']")
     private WebElement warningMessage;
+
+    @FindBy(xpath = "//div[@class ='alert alert-error']//div")
+    private WebElement loginAlert;
+
+    public String getLoginAlert(){
+        return loginAlert.getText();
+    }
 
     //==> we made all webElements private so that they are not accessible anywhere else!
     //and we already have methods to get these

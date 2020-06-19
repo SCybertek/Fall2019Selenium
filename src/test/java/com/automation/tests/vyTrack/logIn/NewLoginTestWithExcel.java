@@ -7,7 +7,7 @@ import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class NewLoginTestWithExcel extends AbstractTestBase {
+public class  NewLoginTestWithExcel extends AbstractTestBase {
 
 //              main goal is :
 //            1- getting all data from excel while testing login with different user,
@@ -55,7 +55,7 @@ public class NewLoginTestWithExcel extends AbstractTestBase {
     @DataProvider
     public Object[][] credentialsFromExcel(){
         //we need username and password columns
-        String path = "VytrackTestUsers.xlsx";
+        String path = "VytrackTestUsers.xlsx"; // we may have multiple excel sheets we need to read from
         String  spreadSheet = "QA3-short";
         ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
         return excelUtil.getDataArray();
